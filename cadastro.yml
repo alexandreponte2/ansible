@@ -1,0 +1,19 @@
+---
+bandas:
+  - "Goo Goo Dolls"
+  - "Kelun"
+  - "Shaaman"
+  - "Eli Soares"
+
+
+cadastro:
+  nome: Alexandre
+  Sobrenome: Elias Cunha
+  Idade: 39
+  Endereco:
+    cidade: BH
+    estado: "Osasco"
+    rua: xyz
+  bandas-preferidas: "{{bandas}}"
+
+---
