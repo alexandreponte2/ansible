@@ -86,5 +86,71 @@ Time Zone: America/Sao_Paulo
 ansible -m timezone -a "name=America/New_York" localhost
 
 
+# ping remote hosts
+ansible -m ping localhost
+ansible -m command -a date localhost
 
 ansible -i "pi5," -m ping pi5
+
+
+ansible -i "pi5,pi4,pi6" -m ping all
+
+
+ansible -i "pi5,pi4,pi6" -m command -a date
+
+
+
+ansible -i "pi5,pi4,pi6" -m command -a date all,localhost
+
+ansible -i my_inventory -m command -a "date" all
+
+
+ansible -m command -a "date" all
+
+ansible -m ping all
+
+
+
+ansible-inventory --list --yaml
+all:
+  children:
+    ungrouped:
+      hosts:
+        localhost: {}
+        pi4: {}
+        pi5: {}
+
+
+
+
+# validando configuração
+ansible-config dump --only-changed
+
+
+
+
+# usar sudo/root no host remoto
+ansible -m timezone -a "name=America/New_York" pi3 --become
+
+
+
+ansible -m timezone -a "name=America/New_York" localhost --diff --become
+
+
+ansible -m timezone -a "name=America/New_York" localhost --diff --become --ask-become-pass
+
+
+ansible -m ping localhost --diff --become --ask-become-pass
+
+
+
+#######
+
+
+ansible -m command -a date all,localhost
+
+
+
+ansible -m timezone -a "name=America/New_York" all,localhost --diff --become --ask-become-pass
+
+ansible -m command -a date all,localhost
