@@ -1,0 +1,11 @@
+ansible all -m ping -i inventory
+
+ansible webservers -m ping -i inventory
+
+
+ansible-playbook -i inventory.yml playbook.yml
+
+
+ansible-playbook -i ec2inventory.yml centos.yml
+
+ansible-playbook centos.yml --syntax-check

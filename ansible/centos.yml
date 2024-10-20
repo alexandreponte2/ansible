@@ -1,0 +1,49 @@
+---
+- hosts: all
+  become: true
+  become_method: sudo
+  tasks:
+    - name: "Update packages and upgrade"
+      yum:
+        name: "*"
+        state: latest
+
+    - name: "Install Apache server (httpd)"
+      yum:
+        name: httpd
+        state: present
+
+    - name: "Ensure httpd is listening on port 80"
+      lineinfile:
+        path: /etc/httpd/conf/httpd.conf
+        regexp: "^Listen 80"
+        line: "Listen 80"
+        state: present
+      notify:
+        - restart httpd
+
+    - name: "Start and enable httpd service"
+      service:
+        name: httpd
+        state: started
+        enabled: true
+
+    - name: "Change content of default index.html"
+      copy:
+        dest: /var/www/html/index.html
+        content: |
+          <html>
+          <head><title>GOKU</title></head>
+          <body>
+          <h1>GOKU GOKU GOKU GOKU GOKU GOKU!</h1>
+          <p>GOKU GOKU a GOKU GOKU GOKU GOKU GOKU.</p>
+          </body>
+          </html>
+      notify:
+        - restart httpd
+
+  handlers:
+    - name: restart httpd
+      service:
+        name: httpd
+        state: restarted

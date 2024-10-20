@@ -154,3 +154,5 @@ ansible -m command -a date all,localhost
 ansible -m timezone -a "name=America/New_York" all,localhost --diff --become --ask-become-pass
 
 ansible -m command -a date all,localhost
+
+ansible-playbook playbook.yml -v (verboso, da pra colocar mais v's exemplo -vvv) 
