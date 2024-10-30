@@ -1,5 +1,8 @@
 # ansible
 
+ssh-agent bash
+ssh-add key-name.pem
+###########
 
 
 ansible localhost -m setup
