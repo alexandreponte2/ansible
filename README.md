@@ -1,5 +1,8 @@
 # ansible
 
+ssh-agent bash
+ssh-add key-name.pem
+###########
 
 
 ansible localhost -m setup
@@ -19,7 +22,7 @@ localhost | CHANGED => {
     "gid": 20,
     "group": "staff",
     "mode": "0755",
-    "owner": "alexandre.s.ponte",
+    "owner": "alexandre",
     "path": "test",
     "size": 64,
     "state": "directory",
@@ -36,7 +39,7 @@ localhost | SUCCESS => {
     "gid": 20,
     "group": "staff",
     "mode": "0755",
-    "owner": "alexandre.s.ponte",
+    "owner": "alexandre",
     "path": "test",
     "size": 64,
     "state": "directory",
@@ -154,3 +157,5 @@ ansible -m command -a date all,localhost
 ansible -m timezone -a "name=America/New_York" all,localhost --diff --become --ask-become-pass
 
 ansible -m command -a date all,localhost
+
+ansible-playbook playbook.yml -v (verboso, da pra colocar mais v's exemplo -vvv) 

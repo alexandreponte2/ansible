@@ -1,0 +1,8 @@
+
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com" -f ~/.ssh/puppet
+
+
+ssh -i "puppet-key.pem" ubuntu@ec2-54-81-103-157.compute-1.amazonaws.com
+
+
+ssh -i "~/.ssh/puppet" ubuntu@ec2-54-81-103-157.compute-1.amazonaws.com
