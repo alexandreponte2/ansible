@@ -1,0 +1,8 @@
+---
+- name: print hello message
+  hosts: localhost
+  gather_facts: no # não carregara os facts
+  tasks:
+  - debug:
+      var: ansible_facts.architecture
+    #  msg: hello from Ansible!

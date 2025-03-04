@@ -1,0 +1,19 @@
+---
+- name: Add DNS server to resolv.conf
+  hosts: localhost
+  become: yes
+  vars:
+    dns_server: 10.1.250.10
+
+  tasks:
+    - name: Add DNS server to resolv.conf
+      lineinfile:
+        path: /etc/resolv.conf
+        line: "nameserver {{ dns_server }}"
+        state: present
+# vars:
+# dns_server: 10.1.250.10
+# variable1: value1
+# variable2: value2
+# inventory
+# Playbook.yml variables

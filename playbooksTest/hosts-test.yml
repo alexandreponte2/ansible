@@ -1,0 +1,23 @@
+# ---
+# - name: Check /etc/hosts file
+#   hosts: localhost
+#   # become: yes
+
+#   tasks:
+#     - name: Display /etc/hosts file
+#       shell: cat /etc/hosts
+#       register: hosts_file
+
+#     - name: Show /etc/hosts content
+#       debug:
+#         msg: "{{ hosts_file.stdout | to_yaml}}"
+
+---
+- name: Check /etc/hosts file
+  hosts: localhost
+  tasks:
+    - name: Display /etc/hosts file
+      shell: cat /etc/hosts
+      register: result
+    - debug:
+        var: result
