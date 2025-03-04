@@ -1,0 +1,19 @@
+brew install qemu
+
+install vagrant
+
+vagrant plugin install vagrant-qemu
+mkdir linux-machine && cd linux-machine
+touch Vagrantfile
+
+"
+Vagrant.configure("2") do |config|
+  config.vm.box = "perk/ubuntu-2204-arm64"
+  config.vm.provider "qemu" do |qemu|
+    qemu.ssh_port = "9999"
+  end
+end
+"
+vagrant up --provider=qemu
+vagrant ssh
+
