@@ -1,0 +1,16 @@
+---
+- name: Add goku1234 to the serch servers
+  lineinfile:
+    path: ./resolv.conf
+    regexp: 'ˆsearch (nameserver)'
+    backrefs: true
+    line: 'search nameserver.com \1'
+
+- name: Add our DC to the nameserver list
+  lineinfile:
+    path: ./resolv.conf
+    line: "nameserver {{item}}"
+    insertafter: '^search.*'
+  loop: "{{domain_controllers}}"
+    
+    

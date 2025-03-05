@@ -10,3 +10,4 @@ ansible-playbook -i ec2inventory.yml centos.yml
 
 ansible-playbook centos.yml --syntax-check # verificar se a sintax esta correta
 
+ansible-lint

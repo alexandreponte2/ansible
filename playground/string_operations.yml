@@ -1,0 +1,5 @@
+- name: "Test modules"
+  hosts: localhost
+  gather_facts: false
+  roles:
+    - replace
