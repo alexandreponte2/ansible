@@ -1,0 +1,8 @@
+---
+- name: 'hosts'
+  hosts: all
+  # hosts: localhost
+  become: yes
+  tasks:
+    - name: Execute script
+      script: /tmp/install_script.sh
